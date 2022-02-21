@@ -1,18 +1,5 @@
-import discord
-from tokenHandling import *
+from Botte import Botte
 
-client = discord.Client()
-
-@client.event
-async def on_ready():
-    print('We have logged in as', client.user)
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
-client.run(get_token())
+if __name__ == '__main__':
+    client = Botte()
+    client.run()
