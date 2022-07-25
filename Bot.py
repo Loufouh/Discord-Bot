@@ -3,7 +3,7 @@ from tokenHandling import *
 
 class Bot(commands.Bot):
     def __init__(self):
-        super().__init__(command_prefix='>>')
+        super().__init__(command_prefix='>')
 
     def run(self):
         super().run(get_token())
