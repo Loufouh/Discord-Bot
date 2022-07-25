@@ -1,10 +1,9 @@
-from discord.ext.commands import Bot as AbsBot
+from discord.ext import commands
 from tokenHandling import *
 
-
-class Bot(AbsBot):
+class Bot(commands.Bot):
     def __init__(self):
-        super().__init__('>')
+        super().__init__(command_prefix='>>')
 
     def run(self):
         super().run(get_token())
@@ -12,5 +11,13 @@ class Bot(AbsBot):
     async def on_ready(self):
         print('Logged as {0}!'.format(self.user))
 
-    async def on_message(self, message):
-        print('Message from {0.author}: \"{0.content}\"'.format(message))
+instance = None
+
+def get_bot():
+    global instance
+
+    if instance is None:
+        instance = Bot()
+
+    return instance
+

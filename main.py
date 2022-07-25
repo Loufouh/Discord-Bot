@@ -1,5 +1,7 @@
-from Bot import Bot
+from Bot import get_bot
+import commands
 
 if __name__ == '__main__':
-    client = Bot()
-    client.run()
+    bot = get_bot()
+    bot.run()
+
