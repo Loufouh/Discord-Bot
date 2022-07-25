@@ -1,8 +1,8 @@
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot as AbsBot
 from tokenHandling import *
 
 
-class Botte(Bot):
+class Bot(AbsBot):
     def __init__(self):
         super().__init__('>')
 

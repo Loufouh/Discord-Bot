@@ -1,5 +1,5 @@
-from Botte import Botte
+from Bot import Bot
 
 if __name__ == '__main__':
-    client = Botte()
+    client = Bot()
     client.run()
