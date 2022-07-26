@@ -1,7 +1,7 @@
 import unittest
 from sys import path
 
-from src.music.downloader.downloader import get_downloader
+from music.downloader.downloader import get_downloader
 
 class TestDownloader(unittest.TestCase):
     def test_download(self):
