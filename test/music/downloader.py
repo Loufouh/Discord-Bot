@@ -1,12 +1,55 @@
 import unittest
-from sys import path
+import os
 
-from music.downloader.downloader import get_downloader
+from music.downloader import get_downloader
 
 class TestDownloader(unittest.TestCase):
-    def test_download(self):
-        filename = get_downloader().download('https://youtu.be/AhCYyopTPO0')
+    link = 'https://youtu.be/AhCYyopTPO0'
+    expectedFilename = 'music_files/Ranch.mp3'
+    givenFilename = ''
 
-        self.assertEqual(filename, 'music_files/Ranch.mp3')
-        self.assertTrue(path.exists('music_files/Ranch.mp3'))
+    downloader = None
+
+    def setUp(self):
+        self.downloader = get_downloader()
+        self.removeFile()
+
+    def tearDown(self):
+        self.removeFile()
+
+    def test_download(self):
+        self.download()
+
+        self.assertFilenameRight()
+        self.assertFileCreated()
+    
+    def test_download_twice(self):
+        self.download()
+        self.download()
+
+        self.assertFilenameRight()
+        self.assertFileCreated()
+
+
+    def download(self):
+        self.givenFilename = self.downloader.download_from_link(self.link)
+
+    def removeFile(self):
+        if os.path.exists(self.expectedFilename):
+            os.remove(self.expectedFilename)
+
+    def assertAllRight(self, filename):
+        self.assertFilenameRight()
+        self.assertFileCreated()
+
+    def assertFilenameRight(self):
+        self.assertEqual(
+                self.givenFilename,
+                self.expectedFilename
+            )
+
+    def assertFileCreated(self):
+        self.assertTrue(
+                os.path.exists(self.expectedFilename)
+            )
 
