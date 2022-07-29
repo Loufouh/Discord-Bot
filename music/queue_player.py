@@ -1,15 +1,22 @@
 
 class QueuePlayer:
+    voiceClient = None
     queue = None
 
     def play(self, voiceClient):
-        def after(error):
-            self.play(voiceClient)
+        self.voiceClient = voiceClient
 
         source = self.queue.pop()
 
         if source is not None:
-            voiceClient.play(source, after=after)
+            voiceClient.play(
+                source,
+                after=lambda e : self.play(voiceClient)
+            )
+
+    def next(self):
+        if self.voiceClient is not None:
+            self.voiceClient.stop()
 
     def set_queue(self, queue):
         self.queue = queue

@@ -1,5 +1,5 @@
 
-class DummyDownloader:
+class Downloader_dummy:
     requestedDownload = False
     lastLink = None
 
@@ -19,7 +19,7 @@ def get_downloader():
     global downloader
 
     if downloader is None:
-        downloader = DummyDownloader()
+        downloader = Downloader_dummy()
 
     return downloader
 

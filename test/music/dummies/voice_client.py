@@ -1,17 +1,11 @@
 
-class DummyVoiceClient:
+class VoiceClient_dummy:
     _isConnected = True
     _isPaused = False
     _isPlaying = False
 
     afterPlay = None
     currentSource = None
-
-    def end_playing(self):
-        self.stop()
-
-        if self.afterPlay is not None:
-            self.afterPlay(None)
 
     def is_connected(self):
         return self._isConnected
@@ -31,12 +25,17 @@ class DummyVoiceClient:
 
     def stop(self):
         self._isPlaying = False
-
         self.currentSource = None
+
+        self.trigger_after_play()
 
     def pause(self):
         self._isPaused = True
 
     def resume(self):
         self._isPaused = False
+
+    def trigger_after_play(self):
+        if self.afterPlay is not None:
+            self.afterPlay(None)
 

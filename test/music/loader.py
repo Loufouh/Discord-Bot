@@ -1,6 +1,6 @@
 import unittest
 from music.loader import get_loader
-from test.music.dummy_downloader import get_downloader
+from test.music.dummies.downloader import get_downloader
 
 class TestMusicLoader(unittest.TestCase):
     downloader = get_downloader()

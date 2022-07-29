@@ -15,6 +15,7 @@ async def _join(ctx):
         await ctx.send('Je trouve pas ton salon audio...')
     else:
         await ctx.send('J\'arrive {} !'.format(ctx.author.mention))
+        await voiceChannel.connect()
         
 @bot.command(name='play')
 async def _play(ctx, musicLink):
@@ -54,3 +55,6 @@ async def _startQueue(ctx):
     get_queue_player().set_queue(queue)
     get_queue_player().play(ctx.voice_client)
 
+@bot.command(name='next')
+async def _next(ctx):
+    get_queue_player().next()
