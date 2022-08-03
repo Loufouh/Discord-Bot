@@ -18,7 +18,7 @@ class TestCase(unittest.TestCase):
         self.remove_file()
 
     def download(self):
-        self.givenFilename = self.downloader.download_from_link(self.link)
+        self.givenFilename = self.downloader.download_from_link(self.link, testing=False)
 
     def remove_file(self):
         if os.path.exists(self.expectedFilename):

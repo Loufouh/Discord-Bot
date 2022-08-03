@@ -1,9 +1,9 @@
 from os import path
 import youtube_dl
 
-def download(link):
+def download(link, testing=False):
     info = get_info_from_link(link)
-    options = generate_options_from_info(info)
+    options = generate_options_from_info(info, testing=testing)
 
     if not path.exists(options['outtmpl']):
         with youtube_dl.YoutubeDL(options) as ydl:
@@ -17,10 +17,12 @@ def get_info_from_link(link):
             download=False
     )
 
-def generate_options_from_info(info):
+def generate_options_from_info(info, testing=False):
     return {
         'format': 'bestaudio/best',
         'keepvideo': False,
-        'outtmpl': 'music_files/' + info['title'] + '.mp3'
+        'outtmpl': 'music_files/' + info['title'] + '.mp3',
+        'test': testing,
+        'live': True
     }   
 

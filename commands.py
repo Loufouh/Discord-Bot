@@ -4,18 +4,18 @@ from music.loader import get_loader
 from music.queue_player import get_queue_player
 from music.queue import Queue
 
+import threading
+
 bot = get_bot()
 queue = Queue()
 
 @bot.command(name='join')
 async def _join(ctx):
-    voiceChannel = ctx.author.voice.channel
-
-    if voiceChannel is None:
-        await ctx.send('Je trouve pas ton salon audio...')
+    if ctx.author.voice is None:
+        await ctx.send('Je trouve pas ton salon audio {}'.format(ctx.author.mention))
     else:
         await ctx.send('J\'arrive {} !'.format(ctx.author.mention))
-        await voiceChannel.connect()
+        await ctx.author.voice.channel.connect()
         
 @bot.command(name='play')
 async def _play(ctx, musicLink):
@@ -46,7 +46,10 @@ async def _resume(ctx):
 async def _add(ctx, link):
     global queue
 
-    queue.add(get_loader().load_from_link(link))
+    def load():
+        queue.add(get_loader().load_from_link(link))
+
+    threading.Thread(target=load).run()
 
 @bot.command(name='startQueue')
 async def _startQueue(ctx):
@@ -58,3 +61,4 @@ async def _startQueue(ctx):
 @bot.command(name='next')
 async def _next(ctx):
     get_queue_player().next()
+

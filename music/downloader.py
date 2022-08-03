@@ -1,8 +1,8 @@
 from music import youtube_mp3_download
 
 class Downloader:
-    def download_from_link(self, link):
-        return youtube_mp3_download.download(link)
+    def download_from_link(self, link, testing=False):
+        return youtube_mp3_download.download(link, testing=testing)
 
 downloader = None
 
