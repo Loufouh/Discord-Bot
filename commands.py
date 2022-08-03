@@ -2,7 +2,7 @@ import discord
 
 from Bot import get_bot
 
-from music.audio_url_retriever import get_retriever
+from music.audio_url_retriever import get_retriever as get_audio_url_retriever
 from music.queue_player import get_queue_player
 from music.queue import Queue
 
@@ -28,7 +28,7 @@ async def _play(ctx, musicLink):
     else:
         queue = Queue()
 
-        url = get_retriever().retrieve(musicLink)
+        url = get_audio_url_retriever().retrieve(musicLink)
         source = discord.FFmpegPCMAudio(url)
 
         queue.add(source)
@@ -53,7 +53,10 @@ async def _add(ctx, link):
     global queue
 
     def load():
-        queue.add(get_loader().load_from_link(link))
+        url = get_audio_url_retriever().retrieve(link)
+        source = discord.FFmpegPCMAudio(url)
+
+        queue.add(source)
 
     threading.Thread(target=load).run()
 
