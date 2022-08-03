@@ -1,6 +1,8 @@
+import discord
+
 from Bot import get_bot
 
-from music.loader import get_loader
+from music.audio_url_retriever import get_retriever
 from music.queue_player import get_queue_player
 from music.queue import Queue
 
@@ -25,7 +27,11 @@ async def _play(ctx, musicLink):
         await ctx.send('Je joue déjà un truc {}'.format(ctx.author.mention))
     else:
         queue = Queue()
-        queue.add(get_loader().load_from_link(musicLink))
+
+        url = get_retriever().retrieve(musicLink)
+        source = discord.FFmpegPCMAudio(url)
+
+        queue.add(source)
 
         get_queue_player().set_queue(queue)
         get_queue_player().play(ctx.voice_client)
