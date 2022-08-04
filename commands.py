@@ -11,14 +11,23 @@ import threading
 bot = get_bot()
 queue = Queue()
 
+class NoVoiceChannelError(Exception):
+    pass
+
 @bot.command(name='join')
 async def _join(ctx):
+    try:
+        await _try_to_join(ctx)
+    except NoVoiceChannelError:
+        await ctx.send('Je trouve pas ton salon audio %s' % ctx.author.mention)
+
+async def _try_to_join(ctx):
     if ctx.author.voice is None:
-        await ctx.send('Je trouve pas ton salon audio {}'.format(ctx.author.mention))
-    else:
-        await ctx.send('J\'arrive {} !'.format(ctx.author.mention))
-        await ctx.author.voice.channel.connect()
-        
+        raise NoVoiceChannelError()
+
+    await ctx.send('J\'arrive %s !' % ctx.author.mention)
+    await ctx.author.voice.channel.connect()
+
 @bot.command(name='play')
 async def _play(ctx, musicLink):
     if ctx.voice_client is None:
