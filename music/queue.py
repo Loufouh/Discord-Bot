@@ -23,3 +23,13 @@ class Queue:
 
         return self.data[0]
 
+queue = None
+
+def get_queue():
+    global queue
+
+    if queue is None:
+        queue = Queue()
+
+    return queue
+
