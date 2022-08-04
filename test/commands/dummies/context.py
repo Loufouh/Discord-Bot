@@ -11,9 +11,9 @@ class Context_dummy:
     async def send(self, msg):
         self.sent = msg
 
-    def _connect_author(self):
-        self.author.voice = VoiceState_dummy()
+    async def _connect_author(self):
+        self.author.voice = VoiceState_dummy(self)
 
-    def _connect(self):
-        self.voice_client = object()
+    async def _connect(self):
+        await self.author.voice.channel.connect()
 

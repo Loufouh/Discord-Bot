@@ -14,6 +14,6 @@ async def _try_to_leave(ctx):
     if ctx.voice_client is None:
         raise NotConnectedException()
 
-    await ctx.send('bye ! %s' % ctx.author.mention)
+    await ctx.send('Bye ! %s' % ctx.author.mention)
     await ctx.voice_client.disconnect()
 

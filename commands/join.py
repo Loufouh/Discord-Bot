@@ -10,6 +10,7 @@ class AlreadyConnectedException(Exception):
 
 @get_bot().command(name='join')
 async def _join(ctx):
+
     try:
         await _try_to_join(ctx)
     except AuthorNotConnectedException:

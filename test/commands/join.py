@@ -15,18 +15,20 @@ class TestJoin(unittest.IsolatedAsyncioTestCase):
         self.assert_sent_channel_not_found()
 
     async def test_already_connected(self):
-        self.ctx._connect_author()
-        self.ctx._connect()
+        await self.ctx._connect_author()
+        await self.ctx._connect()
 
         await _join(self.ctx)
         
         self.assert_sent_already_connected()
+        self.assert_connected_to_channel()
 
     async def test_normal(self):
-        self.ctx._connect_author()
+        await self.ctx._connect_author()
 
         await _join(self.ctx)
 
+        self.assert_sent_joining_message()
         self.assert_connected_to_channel()
 
     def assert_sent_channel_not_found(self):
@@ -34,6 +36,9 @@ class TestJoin(unittest.IsolatedAsyncioTestCase):
 
     def assert_sent_already_connected(self):
         self.assertEqual(self.ctx.sent, 'Je suis déjà connecté [author.mention]') 
+
+    def assert_sent_joining_message(self):
+        self.assertEqual(self.ctx.sent, 'J\'arrive [author.mention] !')
 
     def assert_connected_to_channel(self):
         self.assertTrue(self.ctx.author.voice.channel.isConnected)
