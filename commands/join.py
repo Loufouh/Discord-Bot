@@ -2,7 +2,7 @@ from Bot import get_bot
 
 from discord.errors import ClientException
 
-class NoVoiceChannelException(Exception):
+class AuthorNotConnectedException(Exception):
     pass
 
 class AlreadyConnectedException(Exception):
@@ -12,14 +12,14 @@ class AlreadyConnectedException(Exception):
 async def _join(ctx):
     try:
         await _try_to_join(ctx)
-    except NoVoiceChannelException:
+    except AuthorNotConnectedException:
         await ctx.send('Je trouve pas ton salon audio %s' % ctx.author.mention)
     except AlreadyConnectedException:
         await ctx.send('Je suis déjà connecté %s' % ctx.author.mention)
 
 async def _try_to_join(ctx):
     if ctx.author.voice is None:
-        raise NoVoiceChannelError()
+        raise AuthorNotConnectedException()
     elif ctx.voice_client is not None:
         raise AlreadyConnectedException()
 
