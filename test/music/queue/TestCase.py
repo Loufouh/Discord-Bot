@@ -3,8 +3,6 @@ import unittest
 from music.queue import Queue
 
 class TestCase(unittest.TestCase):
-    queue = None
-
     def setUp(self):
         self.queue = Queue()
 

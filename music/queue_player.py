@@ -1,7 +1,8 @@
 
 class QueuePlayer:
-    voiceClient = None
-    queue = None
+    def __init__(self):
+        self.voiceClient = None
+        self.queue = None
 
     def play(self, voiceClient):
         self.voiceClient = voiceClient

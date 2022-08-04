@@ -1,6 +1,8 @@
 import unittest
 
-from test.commands.context_dummy import Context_dummy
+from test.commands.dummies.context import Context_dummy
+from test.commands.dummies.voice_state import VoiceState_dummy
+
 from commands.join import _join, AuthorNotConnectedException
 
 class TestJoin(unittest.IsolatedAsyncioTestCase):
@@ -8,10 +10,33 @@ class TestJoin(unittest.IsolatedAsyncioTestCase):
     
     def setUp(self):
         self.ctx = Context_dummy()
-        pass 
 
     async def test_author_not_connected(self):
         await _join(self.ctx)
 
-        self.assertEqual(self.ctx.sent, 'Je trouve pas ton salon audio [mention]')
+        self.assert_sent_channel_not_found()
+
+    async def test_already_connected(self):
+        self.ctx._connect_author()
+        self.ctx._connect()
+
+        await _join(self.ctx)
+        
+        self.assert_sent_already_connected()
+
+    async def test_normal(self):
+        self.ctx._connect_author()
+
+        await _join(self.ctx)
+
+        self.assert_connected_to_channel()
+
+    def assert_sent_channel_not_found(self):
+        self.assertEqual(self.ctx.sent, 'Je trouve pas ton salon audio [author.mention]')
+
+    def assert_sent_already_connected(self):
+        self.assertEqual(self.ctx.sent, 'Je suis déjà connecté [author.mention]') 
+
+    def assert_connected_to_channel(self):
+        self.assertTrue(self.ctx.author.voice.channel.isConnected)
 

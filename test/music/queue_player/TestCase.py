@@ -6,10 +6,6 @@ from music.queue import Queue
 from music.queue_player import get_queue_player
 
 class TestCase(unittest.TestCase):
-    queue = None
-    voiceClient = None
-    player = None
-
     def setUp(self):
         self.voiceClient = VoiceClient_dummy()
         self.queue = Queue()

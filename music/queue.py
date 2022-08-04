@@ -1,7 +1,5 @@
 
 class Queue:
-    data = None
-
     def __init__(self):
         self.data = []
 

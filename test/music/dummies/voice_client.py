@@ -1,11 +1,12 @@
 
 class VoiceClient_dummy:
-    _isConnected = True
-    _isPaused = False
-    _isPlaying = False
+    def __init__(self):
+        self._isConnected = True
+        self._isPaused = False
+        self._isPlaying = False
 
-    afterPlay = None
-    currentSource = None
+        self.afterPlay = None
+        self.currentSource = None
 
     def is_connected(self):
         return self._isConnected
