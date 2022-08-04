@@ -6,8 +6,6 @@ from test.commands.dummies.voice_state import VoiceState_dummy
 from commands.join import _join, AuthorNotConnectedException
 
 class TestJoin(unittest.IsolatedAsyncioTestCase):
-    ctx = None
-    
     def setUp(self):
         self.ctx = Context_dummy()
 
