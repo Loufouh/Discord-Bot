@@ -1,5 +1,8 @@
 import subprocess
 
+class WrongUrlException(Exception):
+    pass
+
 class Retriever:
     def retrieve(self, youtube_url):
         result = subprocess.run(
@@ -7,6 +10,9 @@ class Retriever:
             stdout=subprocess.PIPE,
             text=True
         )
+
+        if result.returncode != 0:
+            raise WrongUrlException()
 
         return result.stdout
 
