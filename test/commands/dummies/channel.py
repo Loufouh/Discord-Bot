@@ -9,7 +9,7 @@ class Channel_dummy:
         self.isConnected = True
         self.ctx.voice_client = VoiceProtocol_dummy(self.ctx)
 
-    def _disconnect(self):
+    async def _disconnect(self):
         self.isConnected = False
         self.ctx.voice_client = None
 
