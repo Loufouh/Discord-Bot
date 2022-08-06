@@ -1,8 +1,9 @@
 testing_no_req:
-	export SKIP_REQUEST_TESTS=TRUE ;\
+	@echo "\e[1;33mTesting all...\e[0;35m (except HTTP requests)\e[0;0m"
+	@export SKIP_REQUEST_TESTS=TRUE ;\
 	python3 -m unittest test/*.py test/*/*.py test/*/*/*.py test/*/*/*/*.py test/*/*/*/*/*.py
 
 testing:
-	python3 -m unittest test/*.py test/*/*.py test/*/*/*.py test/*/*/*/*.py test/*/*/*/*/*.py
-
+	@echo "\e[1;33mTesting all...\e[0;0m"
+	@python3 -m unittest test/*.py test/*/*.py test/*/*/*.py test/*/*/*/*.py test/*/*/*/*/*.py
 
