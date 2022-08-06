@@ -1,0 +1,4 @@
+
+class AuthorNotConnectedException(Exception):
+    pass
+

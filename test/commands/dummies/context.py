@@ -1,6 +1,8 @@
 from test.commands.dummies.voice_state import VoiceState_dummy
 from test.commands.dummies.author import Author_dummy
 
+from test.commands.dummies.exception.author_not_connected import AuthorNotConnectedException
+
 class Context_dummy:
     def __init__(self):
         self.author = Author_dummy()
@@ -15,5 +17,8 @@ class Context_dummy:
         self.author.voice = VoiceState_dummy(self)
 
     async def _connect(self):
+        if self.author.voice is None:
+            raise AuthorNotConnectedException()
+
         await self.author.voice.channel.connect()
 
