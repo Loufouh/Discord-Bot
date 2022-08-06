@@ -8,9 +8,8 @@ class TestAudioURLRetriever_retrieve(unittest.TestCase):
     @unittest.skipIf(config['skipRequestTests'],
                     'Avoid spamming Youtube servers')
     def test(self):
-        retriever = get_retriever()
-
         youtubeURL = 'https://youtu.be/paveeT8QPXA'
+        url = get_retriever().retrieve(youtubeURL)
 
-        self.assertTrue('mime=audio' in retriever.retrieve(youtubeURL)) 
+        self.assertIn('mime=audio', url)
         
