@@ -31,6 +31,7 @@ class TestJoin(unittest.IsolatedAsyncioTestCase):
         self.assert_sent_joining_message()
         self.assert_connected_to_channel()
 
+
     def assert_sent_channel_not_found(self):
         self.assertEqual(self.ctx.sent, 'Je trouve pas ton salon audio [author.mention]')
 

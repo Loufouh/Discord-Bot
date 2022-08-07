@@ -21,6 +21,7 @@ class TestLeave(unittest.IsolatedAsyncioTestCase):
 
         self.assert_sent_bye_message()
 
+
     def assert_sent_connected_message(self):
         self.assertEqual(self.ctx.sent, 'Chuis pas connecté [author.mention]')
 
