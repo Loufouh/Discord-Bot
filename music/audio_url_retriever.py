@@ -3,7 +3,7 @@ import subprocess
 class WrongUrlException(Exception):
     pass
 
-class Retriever:
+class AudioUrlRetriever:
     def retrieve(self, youtube_url):
         result = subprocess.run(
             ['youtube-dl', '--quiet', '-f', 'bestaudio/best', '--get-url', youtube_url],
@@ -15,14 +15,4 @@ class Retriever:
             raise WrongUrlException()
 
         return result.stdout
-
-retriever = None
-
-def get_retriever():
-    global retriever
-
-    if retriever is None:
-        retriever = Retriever()
-
-    return retriever
 
