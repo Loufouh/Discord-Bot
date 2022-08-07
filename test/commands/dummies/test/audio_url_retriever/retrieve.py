@@ -9,9 +9,9 @@ class TestAudioUrlRetriever_retrieve(unittest.TestCase):
         self.retriever = AudioUrlRetriever_dummy()
 
     def test_successful(self):
-        source = self.retriever.retrieve('fake_link')
+        url = self.retriever.retrieve('fake_link')
 
-        self.assertIsInstance(source, discord.AudioSource)
+        self.assertEquals(url, 'fake_url')
 
     def test_WrongUrlException(self):
         self.retriever._triggerWrongUrlException = True

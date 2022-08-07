@@ -11,5 +11,5 @@ class AudioUrlRetriever_dummy:
         if self._triggerWrongUrlException:
             raise WrongUrlException()
 
-        return discord.AudioSource()
+        return 'fake_url'
 
