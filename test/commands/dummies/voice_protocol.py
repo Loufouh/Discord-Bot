@@ -4,5 +4,5 @@ class VoiceProtocol_dummy:
         self.ctx = ctx
 
     async def disconnect(self):
-        await self.ctx.author.voice.channel._disconnect()
+        await self.ctx._disconnect()
 
