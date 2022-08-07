@@ -22,3 +22,6 @@ class Context_dummy:
 
         await self.author.voice.channel.connect()
 
+    async def _disconnect(self):
+        self.voice_client = None
+
