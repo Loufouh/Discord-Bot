@@ -5,6 +5,6 @@ class TestChannel__disconnect(TestCase):
         await self.channel.connect()
         await self.channel._disconnect()
 
-        self.assertFalse(self.channel.isConnected)
+        self.assertFalse(self.channel._isConnected)
         self.assertIsNone(self.channel.ctx.voice_client)
 

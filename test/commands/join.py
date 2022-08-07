@@ -41,5 +41,5 @@ class TestJoin(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.ctx.sent, 'J\'arrive [author.mention] !')
 
     def assert_connected_to_channel(self):
-        self.assertTrue(self.ctx.author.voice.channel.isConnected)
+        self.assertTrue(self.ctx.author.voice.channel._isConnected)
 

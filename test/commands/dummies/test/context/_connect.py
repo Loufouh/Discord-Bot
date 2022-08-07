@@ -11,7 +11,7 @@ class TestContext__connect(unittest.IsolatedAsyncioTestCase):
         await self.ctx._connect_author()
         await self.ctx._connect()
 
-        self.assertTrue(self.ctx.author.voice.channel.isConnected)
+        self.assertTrue(self.ctx.author.voice.channel._isConnected)
 
     async def test_author_not_connected(self):
         with self.assertRaises(AuthorNotConnectedException):

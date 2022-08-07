@@ -9,5 +9,5 @@ class TestChannel_default(unittest.TestCase):
         channel = Channel_dummy(ctx)
 
         self.assertEqual(channel.ctx, ctx)
-        self.assertFalse(channel.isConnected)
+        self.assertFalse(channel._isConnected)
 
