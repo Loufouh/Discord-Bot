@@ -11,7 +11,7 @@ class TestLeave(unittest.IsolatedAsyncioTestCase):
     async def test_not_connected(self):
         await _leave(self.ctx)
 
-        self.assertEqual(self.ctx.sent, 'Chuis pas connecté [author.mention]')
+        self.assert_sent_connected_message()
 
     async def test_normal(self):
         await self.ctx._connect_author()
@@ -19,5 +19,11 @@ class TestLeave(unittest.IsolatedAsyncioTestCase):
 
         await _leave(self.ctx)
 
+        self.assert_sent_bye_message()
+
+    def assert_sent_connected_message(self):
+        self.assertEqual(self.ctx.sent, 'Chuis pas connecté [author.mention]')
+
+    def assert_sent_bye_message(self):
         self.assertEqual(self.ctx.sent, 'Bye ! [author.mention]')
 
