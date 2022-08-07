@@ -11,7 +11,7 @@ class TestAudioUrlRetriever_retrieve(unittest.TestCase):
     def test_successful(self):
         url = self.retriever.retrieve('fake_link')
 
-        self.assertEquals(url, 'fake_url')
+        self.assertEqual(url, 'fake_url')
 
     def test_WrongUrlException(self):
         self.retriever._triggerWrongUrlException = True
