@@ -9,6 +9,8 @@ class TestAudioSourceGenerator_default(unittest.TestCase):
     def test(self):
         generator = AudioSourceGenerator_dummy()
 
+        self.assertFalse(generator.triggerWrongLinkException)
+
         self.assertIsInstance(generator.urlRetriever, AudioUrlRetriever_dummy)
         self.assertIsInstance(generator.ffmpegHandler, FFmpegHandler_dummy)
 
