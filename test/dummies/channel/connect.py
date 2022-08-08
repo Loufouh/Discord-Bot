@@ -1,4 +1,4 @@
-from test.commands.dummies.test.channel.test_case import TestCase
+from test.dummies.channel.test_case import TestCase
 
 class TestChannel_connect(TestCase):
     async def test(self):
