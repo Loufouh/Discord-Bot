@@ -1,0 +1,4 @@
+
+from commands.exceptions.author_not_connected import AuthorNotConnectedException
+from commands.exceptions.already_connected import AlreadyConnectedException
+

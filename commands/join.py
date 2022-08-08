@@ -1,12 +1,7 @@
 from Bot import get_bot
 
 from discord.errors import ClientException
-
-class AuthorNotConnectedException(Exception):
-    pass
-
-class AlreadyConnectedException(Exception):
-    pass
+from commands.exceptions.exceptions import AuthorNotConnectedException, AlreadyConnectedException
 
 @get_bot().command(name='join')
 async def _join(ctx):

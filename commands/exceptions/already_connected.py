@@ -1,0 +1,4 @@
+
+class AlreadyConnectedException(Exception):
+    pass
+

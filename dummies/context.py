@@ -1,7 +1,7 @@
 from dummies.voice_state import VoiceState_dummy
 from dummies.author import Author_dummy
 
-from test.commands.dummies.exception.author_not_connected import AuthorNotConnectedException
+from commands.exceptions.exceptions import AuthorNotConnectedException
 
 class Context_dummy:
     def __init__(self):
