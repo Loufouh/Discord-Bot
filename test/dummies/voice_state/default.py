@@ -2,7 +2,7 @@ import unittest
 
 from dummies.voice_state import VoiceState_dummy
 from dummies.context import Context_dummy
-from test.commands.dummies.channel import Channel_dummy
+from dummies.channel import Channel_dummy
 
 class TestVoiceState_default(unittest.TestCase):
     def test(self):

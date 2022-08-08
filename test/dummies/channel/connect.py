@@ -1,6 +1,6 @@
 import unittest
 
-from test.commands.dummies.channel import Channel_dummy
+from dummies.channel import Channel_dummy
 from dummies.context import Context_dummy
 
 class TestChannel_connect(unittest.IsolatedAsyncioTestCase):
