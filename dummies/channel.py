@@ -1,4 +1,4 @@
-from test.commands.dummies.voice_protocol import VoiceProtocol_dummy
+from dummies.voice_protocol import VoiceProtocol_dummy
 
 class Channel_dummy:
     def __init__(self, ctx):
