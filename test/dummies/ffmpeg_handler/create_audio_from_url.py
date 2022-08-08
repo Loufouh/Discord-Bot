@@ -1,7 +1,7 @@
 import unittest
 import discord
 
-from test.commands.dummies.ffmpeg_handler import FFmpegHandler_dummy
+from dummies.ffmpeg_handler import FFmpegHandler_dummy
 
 class TestFFmpegHandler_create_from_url(unittest.TestCase):
     def test(self):
