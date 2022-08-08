@@ -1,6 +1,6 @@
 import unittest
 
-from test.commands.dummies.context import Context_dummy
+from dummies.context import Context_dummy
 from test.commands.dummies.exception.author_not_connected import AuthorNotConnectedException
 
 class TestContext__connect(unittest.IsolatedAsyncioTestCase):

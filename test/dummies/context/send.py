@@ -1,6 +1,6 @@
 import unittest
 
-from test.commands.dummies.context import Context_dummy
+from dummies.context import Context_dummy
 
 class TestContext_send(unittest.IsolatedAsyncioTestCase):
     def setUp(self):

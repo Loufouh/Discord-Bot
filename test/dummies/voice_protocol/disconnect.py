@@ -1,7 +1,6 @@
 import unittest
 
-from test.commands.dummies.context import Context_dummy
-
+from dummies.context import Context_dummy
 
 class TestVoiceProtocol_disconnect(unittest.IsolatedAsyncioTestCase):
     async def test(self):
