@@ -1,7 +1,7 @@
 import unittest
 
 from test.commands.dummies.context import Context_dummy
-from test.commands.dummies.author import Author_dummy
+from dummies.author import Author_dummy
 
 class TestContext_default(unittest.TestCase):
     def setUp(self):

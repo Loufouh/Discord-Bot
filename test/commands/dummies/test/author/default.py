@@ -1,6 +1,6 @@
 import unittest
 
-from test.commands.dummies.author import Author_dummy
+from dummies.author import Author_dummy
 
 class TestAuthor_default(unittest.TestCase):
     def test(self):
