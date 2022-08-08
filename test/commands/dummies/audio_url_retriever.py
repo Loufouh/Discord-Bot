@@ -7,7 +7,7 @@ class AudioUrlRetriever_dummy:
         self._retrievedLink = ''
         self._triggerWrongUrlException = False
 
-    def retrieve(self, link):
+    def retrieve_from_link(self, link):
         if self._triggerWrongUrlException:
             raise WrongUrlException()
 
