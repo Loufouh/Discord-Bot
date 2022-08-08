@@ -1,4 +1,4 @@
-from test.commands.dummies.voice_state import VoiceState_dummy
+from dummies.voice_state import VoiceState_dummy
 from dummies.author import Author_dummy
 
 from test.commands.dummies.exception.author_not_connected import AuthorNotConnectedException

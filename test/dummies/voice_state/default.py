@@ -1,6 +1,6 @@
 import unittest
 
-from test.commands.dummies.voice_state import VoiceState_dummy
+from dummies.voice_state import VoiceState_dummy
 from dummies.context import Context_dummy
 from test.commands.dummies.channel import Channel_dummy
 

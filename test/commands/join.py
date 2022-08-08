@@ -1,7 +1,7 @@
 import unittest
 
 from dummies.context import Context_dummy
-from test.commands.dummies.voice_state import VoiceState_dummy
+from dummies.voice_state import VoiceState_dummy
 
 from commands.join import _join, AuthorNotConnectedException
 
