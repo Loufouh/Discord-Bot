@@ -2,7 +2,7 @@ import unittest
 import discord
 
 from music.audio_source_generator import WrongLinkException
-from test.commands.dummies.audio_source_generator import AudioSourceGenerator_dummy
+from dummies.audio_source_generator import AudioSourceGenerator_dummy
 
 class TestAudioSourceGenerator_generate_from_link(unittest.TestCase):
     def setUp(self):
