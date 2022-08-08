@@ -1,7 +1,7 @@
 import unittest
 import discord
 
-from test.commands.dummies.audio_url_retriever import AudioUrlRetriever_dummy
+from dummies.audio_url_retriever import AudioUrlRetriever_dummy
 from music.audio_url_retriever import WrongUrlException
 
 class TestAudioUrlRetriever_retrieve(unittest.TestCase):
