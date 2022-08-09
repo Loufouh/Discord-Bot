@@ -9,4 +9,6 @@ class TestVoiceProtocol_default(unittest.IsolatedAsyncioTestCase):
         voiceProtocol = VoiceProtocol_dummy(ctx)
 
         self.assertEqual(voiceProtocol.ctx, ctx)
+        self.assertFalse(voiceProtocol.is_playing())
+        self.assertIsNone(voiceProtocol.source)
 

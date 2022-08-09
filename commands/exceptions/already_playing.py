@@ -1,0 +1,4 @@
+
+class AlreadyPlayingException(Exception):
+    pass
+

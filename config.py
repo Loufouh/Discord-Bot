@@ -1,6 +1,6 @@
 import os
 
 config = {
-    'skipRequestTests': os.environ.get('SKIP_REQUEST_TESTS') == 'TRUE'
+    'isTesting': os.environ.get('IS_TESTING') == 'TRUE'
 }
 
