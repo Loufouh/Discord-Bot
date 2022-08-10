@@ -5,7 +5,7 @@ from commands.exceptions.exceptions import NotConnectedException, AlreadyPlaying
 from music.audio_source_generator import AudioSourceGenerator
 from music.audio_source_generator import WrongLinkException
 
-from dummies.commands.objects.play import PlayCommand_dummy
+from dummies.commands.objects.command import Command_dummy
 
 class PlayCommand:
     def __init__(self):
@@ -38,7 +38,7 @@ def get_command():
 
     if _command is None:
         if config['isTesting']:
-            _command = PlayCommand_dummy()
+            _command = Command_dummy()
         else:
             _command = PlayCommand()
 
