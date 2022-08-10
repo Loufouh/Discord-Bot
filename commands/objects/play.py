@@ -1,5 +1,3 @@
-from config import config
-
 from commands.exceptions.exceptions import NotConnectedException, AlreadyPlayingException
 
 from music.audio_source_generator import AudioSourceGenerator
