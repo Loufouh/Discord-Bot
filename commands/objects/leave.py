@@ -1,5 +1,3 @@
-from config import config
-
 from commands.exceptions.exceptions import NotConnectedException
 from dummies.commands.objects.command import Command_dummy
 
@@ -16,22 +14,4 @@ class LeaveCommand:
 
         await ctx.send('Bye ! %s' % ctx.author.mention)
         await ctx.voice_client.disconnect()
-
-_command = None
-
-def get_command():
-    global _command
-
-    if _command is None:
-        if config['isTesting']:
-            _command = Command_dummy()
-        else:
-            _command = LeaveCommand()
-
-    return _command
-
-def reset():
-    global _command
-
-    _command = None
 
