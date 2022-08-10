@@ -1,4 +1,7 @@
+from config import config
+
 from commands.exceptions.exceptions import AuthorNotConnectedException, AlreadyConnectedException
+from dummies.commands.objects.command import Command_dummy
 
 class JoinCommand:
     async def execute(self, ctx):
@@ -17,4 +20,22 @@ class JoinCommand:
 
         await ctx.send('J\'arrive %s !' % ctx.author.mention)
         await ctx.author.voice.channel.connect()
+
+_command = None
+
+def get_command():
+    global _command
+
+    if _command is None:
+        if config['isTesting']:
+            _command = Command_dummy()
+        else:
+            _command = JoinCommand()
+
+    return _command
+
+def reset():
+    global _command
+
+    _command = None
 
