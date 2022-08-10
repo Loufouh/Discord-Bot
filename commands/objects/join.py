@@ -6,9 +6,9 @@ class JoinCommand:
         try:
             await self.try_to_execute(ctx)
         except AuthorNotConnectedException:
-            await ctx.reply('Tu dois être connecté à un salon audio pour ça')
+            await ctx.send('Tu dois être connecté à un salon audio pour ça %s' % ctx.author.mention)
         except AlreadyConnectedException:
-            await ctx.reply('Je suis déjà connecté') 
+            await ctx.send('Je suis déjà connecté %s' % ctx.author.mention) 
 
     async def try_to_execute(self, ctx):
         if ctx.author.voice is None:
@@ -16,6 +16,6 @@ class JoinCommand:
         if ctx.voice_client is not None:
             raise AlreadyConnectedException()
 
-        await ctx.reply('J\'arrive !')
+        await ctx.send('J\'arrive ! %s' % ctx.author.mention)
         await ctx.author.voice.channel.connect()
 
