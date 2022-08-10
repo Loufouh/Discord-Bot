@@ -1,5 +1,3 @@
-from config import config
-
 from commands.exceptions.exceptions import AuthorNotConnectedException, AlreadyConnectedException
 from dummies.commands.objects.command import Command_dummy
 
