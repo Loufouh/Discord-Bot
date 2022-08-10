@@ -1,5 +1,7 @@
 from commands.exceptions.exceptions import NotConnectedException, AlreadyPlayingException
 
+from message_sender import MessageSender
+
 from music.audio_source_generator import AudioSourceGenerator
 from music.audio_source_generator import WrongLinkException
 
@@ -13,7 +15,7 @@ class PlayCommand:
         try:
             await self.try_to_execute(ctx, musicLink)
         except NotConnectedException:
-            await ctx.send('Je joue déjà un truc %s' % ctx.author.mention)
+            await ctx.send('Tu dois être connecté pour ça %s' % ctx.author.mention)
         except AlreadyPlayingException:
             await ctx.send('Je joue déjà un truc %s' % ctx.author.mention)
         except WrongLinkException:

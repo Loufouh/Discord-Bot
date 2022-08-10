@@ -26,7 +26,7 @@ class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         await self.command.execute(self.ctx, 'fake_link')
 
-        self.assertEqual(self.ctx.sent, 'Je joue déjà un truc [author.mention]')
+        self.assertEqual(self.ctx.sent, 'Tu dois être connecté pour ça [author.mention]')
 
     async def test_already_playing(self):
         await self.command.execute(self.ctx, 'fake_link')
