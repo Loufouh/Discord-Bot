@@ -33,21 +33,3 @@ class PlayCommand:
 
         ctx.voice_client.play(source)
 
-_command = None
-
-def get_command():
-    global _command
-
-    if _command is None:
-        if config['isTesting']:
-            _command = Command_dummy()
-        else:
-            _command = PlayCommand()
-
-    return _command
-
-def reset():
-    global _command
-
-    _command = None
-
