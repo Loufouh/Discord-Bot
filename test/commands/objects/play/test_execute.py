@@ -18,6 +18,7 @@ class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx, 'fake_link')
 
+        self.assertEqual(self.ctx.sent, 'Ça marche [author.mention]')
         self.assertTrue(self.ctx.voice_client.is_playing())
 
     async def test_not_connected(self):

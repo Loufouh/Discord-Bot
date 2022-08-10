@@ -29,6 +29,8 @@ class PlayCommand:
 
         source = self.sourceGenerator.generate_from_link(musicLink)
 
+        await ctx.send('Ça marche %s' % ctx.author.mention)
+
         ctx.voice_client.play(source)
 
 _command = None
