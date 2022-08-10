@@ -1,6 +1,6 @@
 import unittest
 
-from commands.objects.join import get_command, reset, _command
+from commands.objects.leave import get_command, reset, _command
 
 class TestLeaveCommand_reset(unittest.TestCase):
     def test(self):
