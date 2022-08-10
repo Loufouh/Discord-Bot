@@ -15,11 +15,11 @@ class TestLeaveCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         await self.command.execute(self.ctx)
 
-        self.assertEqual(self.ctx.replied, 'Bye !')
+        self.assertEqual(self.ctx.sent, 'Bye ! [author.mention]')
         self.assertIsNone(self.ctx.voice_client)
 
     async def test_not_connected(self):
         await self.command.execute(self.ctx)
 
-        self.assertEqual(self.ctx.replied, 'Chuis pas connecté')
+        self.assertEqual(self.ctx.sent, 'Chuis pas connecté [author.mention]')
 
