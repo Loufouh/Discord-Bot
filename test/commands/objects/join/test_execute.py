@@ -13,13 +13,13 @@ class TestJoinCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         await self.command.execute(self.ctx)
 
-        self.assertEqual(self.ctx.sent, 'J\'arrive [author.mention] !')
+        self.assertEqual(self.ctx.replied, 'J\'arrive !')
         self.assertTrue(self.ctx.author.voice.channel._isConnected)
 
     async def test_author_not_connected(self):
         await self.command.execute(self.ctx)
 
-        self.assertEqual(self.ctx.sent, 'Tu dois être connecté à un salon audio pour ça [author.mention]')
+        self.assertEqual(self.ctx.replied, 'Tu dois être connecté à un salon audio pour ça')
 
     async def test_already_connected(self):
         await self.ctx._connect_author()
@@ -27,6 +27,6 @@ class TestJoinCommand_execute(unittest.IsolatedAsyncioTestCase):
         await self.command.execute(self.ctx)
         await self.command.execute(self.ctx)
 
-        self.assertEqual(self.ctx.sent, 'Je suis déjà connecté [author.mention]') 
+        self.assertEqual(self.ctx.replied, 'Je suis déjà connecté') 
         self.assertTrue(self.ctx.author.voice.channel._isConnected)
 
