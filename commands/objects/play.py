@@ -19,7 +19,7 @@ class PlayCommand:
         except AlreadyPlayingException:
             await ctx.send('Je joue déjà un truc %s' % ctx.author.mention)
         except WrongLinkException:
-            await ctx.send('Le lien est cassé %s' % ctx.author.mention)
+            await ctx.send('Le lien ne semble pas fonctionner %s' % ctx.author.mention)
 
     async def try_to_execute(self, ctx, musicLink):
         if ctx.voice_client is None:
