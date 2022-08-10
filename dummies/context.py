@@ -9,9 +9,13 @@ class Context_dummy:
         self.voice_client = None
 
         self.sent = ''
+        self.replied = ''
 
     async def send(self, msg):
         self.sent = msg
+
+    async def reply(self, msg):
+        self.replied = msg
 
     async def _connect_author(self):
         self.author.voice = VoiceState_dummy(self)
