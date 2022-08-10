@@ -11,5 +11,4 @@ class TestContext_default(unittest.TestCase):
         self.assertIsInstance(self.context.author, Author_dummy)
         self.assertIsNone(self.context.voice_client)
         self.assertEqual(self.context.sent, '')
-        self.assertEqual(self.context.replied, '')
 
