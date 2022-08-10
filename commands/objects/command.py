@@ -4,16 +4,16 @@ from dummies.commands.objects.command import Command_dummy
 
 _commands = {}
 
-def get_command(commandClass):
+def get_command(cls):
     global _commands
 
-    if commandClass not in _commands.keys():
+    if cls not in _commands.keys():
         if config['isTesting']:
-            _commands[commandClass] = Command_dummy()
+            _commands[cls] = Command_dummy()
         else:
-            _commands[commandClass] = commandClass()
+            _commands[cls] = cls()
 
-    return _commands[commandClass]
+    return _commands[cls]
 
 def reset():
     global _commands
