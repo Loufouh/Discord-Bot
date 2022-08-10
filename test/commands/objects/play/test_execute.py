@@ -38,5 +38,5 @@ class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         await self.command.execute(self.ctx, 'wrong_link')
 
-        self.assertEqual(self.ctx.sent, 'Le lien est cassé [author.mention]')
+        self.assertEqual(self.ctx.sent, 'Le lien ne semble pas fonctionner [author.mention]')
 
