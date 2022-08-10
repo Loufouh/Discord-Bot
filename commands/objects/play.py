@@ -13,11 +13,11 @@ class PlayCommand:
         try:
             await self.try_to_execute(ctx, musicLink)
         except NotConnectedException:
-            await ctx.send('Je joue déjà un truc %s' % ctx.author.mention)
+            await ctx.reply('Je joue déjà un truc')
         except AlreadyPlayingException:
-            await ctx.send('Je joue déjà un truc %s' % ctx.author.mention)
+            await ctx.reply('Je joue déjà un truc')
         except WrongLinkException:
-            await ctx.send('Le lien ne semble pas fonctionner %s' % ctx.author.mention)
+            await ctx.reply('Le lien ne semble pas fonctionner')
 
     async def try_to_execute(self, ctx, musicLink):
         if ctx.voice_client is None:
@@ -27,7 +27,7 @@ class PlayCommand:
 
         source = self.sourceGenerator.generate_from_link(musicLink)
 
-        await ctx.send('Ça marche %s' % ctx.author.mention)
+        await ctx.reply('Ça marche')
 
         ctx.voice_client.play(source)
 

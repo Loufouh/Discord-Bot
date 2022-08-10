@@ -18,7 +18,7 @@ class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx, 'fake_link')
 
-        self.assertEqual(self.ctx.sent, 'Ça marche [author.mention]')
+        self.assertEqual(self.ctx.replied, 'Ça marche')
         self.assertTrue(self.ctx.voice_client.is_playing())
 
     async def test_not_connected(self):
@@ -26,18 +26,18 @@ class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         await self.command.execute(self.ctx, 'fake_link')
 
-        self.assertEqual(self.ctx.sent, 'Je joue déjà un truc [author.mention]')
+        self.assertEqual(self.ctx.replied, 'Je joue déjà un truc')
 
     async def test_already_playing(self):
         await self.command.execute(self.ctx, 'fake_link')
         await self.command.execute(self.ctx, 'fake_link')
 
-        self.assertEqual(self.ctx.sent, 'Je joue déjà un truc [author.mention]')
+        self.assertEqual(self.ctx.replied, 'Je joue déjà un truc')
 
     async def test_wrong_link(self):
         self.command.sourceGenerator.triggerWrongLinkException = True
 
         await self.command.execute(self.ctx, 'wrong_link')
 
-        self.assertEqual(self.ctx.sent, 'Le lien ne semble pas fonctionner [author.mention]')
+        self.assertEqual(self.ctx.replied, 'Le lien ne semble pas fonctionner')
 
