@@ -16,6 +16,7 @@ class TestAddCommand_execute(unittest.IsolatedAsyncioTestCase):
         self.ctx = Context_dummy()
 
         self.queue = get_queue()
+        self.queue.reset()
 
     async def test_normal(self):
         await self.command.execute(self.ctx, 'fake_link')
@@ -23,6 +24,14 @@ class TestAddCommand_execute(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.ctx.sent, 'Je l\'ajoute à la file [author.mention]')
         self.assertEqual(self.queue.get_size(), 1)
         self.assertIsInstance(self.queue.get_head(), discord.AudioSource)
+
+    async def test_normal_100_times(self):
+        for i in range(100):
+            await self.command.execute(self.ctx, 'fake_link')
+
+            self.assertEqual(self.ctx.sent, 'Je l\'ajoute à la file [author.mention]')
+            self.assertIsInstance(self.queue.get_head(), discord.AudioSource)
+            self.assertEqual(self.queue.get_size(), i + 1)
 
     async def test_wrong_link(self):
         self.command.sourceGenerator.triggerWrongLinkException = True
