@@ -14,6 +14,9 @@ class Queue:
         self.data = self.data[1:]
 
         return source
+     
+    def reset(self):
+        self.data = []
 
     def get_head(self):
         if len(self.data) == 0:
