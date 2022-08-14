@@ -20,6 +20,9 @@ class Queue:
             return None
 
         return self.data[0]
+	
+    def get_size(self):
+        return len(self.data)
 
 queue = None
 
