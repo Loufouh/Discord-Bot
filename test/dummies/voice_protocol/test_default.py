@@ -11,4 +11,5 @@ class TestVoiceProtocol_default(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(voiceProtocol.ctx, ctx)
         self.assertFalse(voiceProtocol.is_playing())
         self.assertIsNone(voiceProtocol.source)
+        self.assertFalse(voiceProtocol._calledStop)
 
