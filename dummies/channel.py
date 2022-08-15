@@ -1,4 +1,4 @@
-from dummies.voice_protocol import VoiceProtocol_dummy
+from dummies.voice_client import VoiceClient_dummy
 
 class Channel_dummy:
     def __init__(self, ctx):
@@ -7,5 +7,5 @@ class Channel_dummy:
 
     async def connect(self):
         self._isConnected = True
-        self.ctx.voice_client = VoiceProtocol_dummy(self.ctx)
+        self.ctx.voice_client = VoiceClient_dummy(self.ctx)
 

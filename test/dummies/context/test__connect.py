@@ -1,7 +1,7 @@
 import unittest
 
 from dummies.context import Context_dummy
-from dummies.voice_protocol import VoiceProtocol_dummy
+from dummies.voice_client import VoiceClient_dummy
 
 from commands.exceptions.exceptions import AuthorNotConnectedException
 
@@ -14,7 +14,7 @@ class TestContext__connect(unittest.IsolatedAsyncioTestCase):
         await self.ctx._connect()
 
         self.assertTrue(self.ctx.author.voice.channel._isConnected)
-        self.assertIsInstance(self.ctx.voice_client, VoiceProtocol_dummy)
+        self.assertIsInstance(self.ctx.voice_client, VoiceClient_dummy)
 
     async def test_author_not_connected(self):
         with self.assertRaises(AuthorNotConnectedException):

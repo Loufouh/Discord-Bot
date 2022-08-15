@@ -3,7 +3,7 @@ import discord
 def emptyFunc():
     pass
 
-class VoiceProtocol_dummy:
+class VoiceClient_dummy:
     def __init__(self, ctx):
         self.ctx = ctx
         self._isPlaying = False
