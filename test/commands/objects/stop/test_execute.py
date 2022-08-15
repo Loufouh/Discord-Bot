@@ -7,17 +7,17 @@ from commands.objects.play import PlayCommand
 from dummies.context import Context_dummy
 
 class TestStopCommand_execute(unittest.IsolatedAsyncioTestCase):
-    def setUp(self):
+    async def asyncSetUp(self):
         self.ctx = Context_dummy()
 
         self.command = StopCommand()
 
-    async def test_normal(self):
         await self.ctx._connect_author()
         await self.ctx._connect()
 
         self.ctx.voice_client.play(discord.AudioSource())
 
+    async def test(self):
         await self.command.execute(self.ctx)
 
         self.assertTrue(self.ctx.voice_client._calledStop)
