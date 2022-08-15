@@ -14,6 +14,7 @@ class VoiceClient_dummy:
         self._afterPlayFunc = emptyFunc
         self._calledStop = False
         self._calledPause = False
+        self._calledResume = False
 
     async def disconnect(self):
         await self.ctx._disconnect()
@@ -39,6 +40,10 @@ class VoiceClient_dummy:
     def pause(self):
         self._isPaused = True
         self._calledPause = True
+
+    def resume(self):
+        self._isPaused = False
+        self._calledResume = True
 
     def is_playing(self):
         return self._isPlaying
