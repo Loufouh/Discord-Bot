@@ -6,10 +6,14 @@ def emptyFunc(error):
 class VoiceClient_dummy:
     def __init__(self, ctx):
         self.ctx = ctx
-        self._isPlaying = False
         self.source = None
+
+        self._isPlaying = False
+        self._isPaused = False
+
         self._afterPlayFunc = emptyFunc
         self._calledStop = False
+        self._calledPause = False
 
     async def disconnect(self):
         await self.ctx._disconnect()
@@ -32,8 +36,15 @@ class VoiceClient_dummy:
         self._end_playing()
         self._calledStop = True
 
+    def pause(self):
+        self._isPaused = True
+        self._calledPause = True
+
     def is_playing(self):
         return self._isPlaying
+
+    def is_paused(self):
+        return self._isPaused
 
     def _end_playing(self):
         self._isPlaying = False
