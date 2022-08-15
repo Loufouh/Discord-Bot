@@ -42,7 +42,7 @@ class TestVoiceClient_stop(unittest.IsolatedAsyncioTestCase):
     def test_after(self):
         isAfterExecuted = False 
        
-        def after():
+        def after(error):
             nonlocal isAfterExecuted
             isAfterExecuted = True
 

@@ -1,6 +1,6 @@
 import discord
 
-def emptyFunc():
+def emptyFunc(error):
     pass
 
 class VoiceClient_dummy:
@@ -39,5 +39,5 @@ class VoiceClient_dummy:
         self._isPlaying = False
         self.source = None
 
-        self._afterPlayFunc()
+        self._afterPlayFunc(None)
         

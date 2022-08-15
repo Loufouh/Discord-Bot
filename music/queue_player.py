@@ -1,3 +1,4 @@
+from config import config
 
 class QueuePlayer:
     def __init__(self):
@@ -12,7 +13,7 @@ class QueuePlayer:
         if source is not None:
             voiceClient.play(
                 source,
-                after=lambda e : self.play(voiceClient)
+                after=lambda error : self.play(voiceClient)
             )
 
     def next(self):

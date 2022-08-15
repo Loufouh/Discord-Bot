@@ -24,7 +24,7 @@ class TestVoiceClient_play(unittest.IsolatedAsyncioTestCase):
     def test_normal_with_after(self):
         isAfterExecuted = False
 
-        def after():
+        def after(error):
             nonlocal isAfterExecuted
             isAfterExecuted = True
         
