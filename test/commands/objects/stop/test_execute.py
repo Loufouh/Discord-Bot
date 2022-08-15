@@ -5,7 +5,6 @@ from commands.objects.stop import StopCommand
 from commands.objects.play import PlayCommand
 
 from dummies.context import Context_dummy
-from dummies.audio_source_generator import AudioSourceGenerator_dummy
 
 class TestStopCommand_execute(unittest.IsolatedAsyncioTestCase):
     def setUp(self):
