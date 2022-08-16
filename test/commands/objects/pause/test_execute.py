@@ -29,3 +29,16 @@ class TestPauseCommand_execute(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(self.ctx.voice_client.is_paused())
         self.assertEqual(self.ctx.sent, 'C\'est déjà en pause [author.mention]')
 
+    async def test_not_connected(self):
+        await self.ctx._disconnect()
+
+        await self.command.execute(self.ctx)
+
+        self.assertEqual(self.ctx.sent, 'Je ne joue rien pour l\'instant [author.mention]')
+
+    async def test_author_not_connected(self):
+        await self.ctx._disconnect_author()
+
+        await self.command.execute(self.ctx)
+
+        self.assertEqual(self.ctx.sent, 'Tu dois être connecté au salon pour ça [author.mention]')
