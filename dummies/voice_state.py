@@ -7,5 +7,5 @@ class VoiceState_dummy:
 
     async def _disconnect(self):
         self.channel.is_connected = False
-        self.ctx.voice_client = None
+        self.ctx.author.voice = None
 
