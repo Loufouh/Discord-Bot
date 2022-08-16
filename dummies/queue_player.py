@@ -1,6 +1,7 @@
 
 class QueuePlayer_dummy:
     def __init__(self):
+        self.queue = None
         self.voiceClient = None
 
         self._calledNext = False
@@ -12,4 +13,7 @@ class QueuePlayer_dummy:
 
     def next(self):
         self._calledNext = True
+
+    def set_queue(self, queue):
+        self.queue = queue
 
