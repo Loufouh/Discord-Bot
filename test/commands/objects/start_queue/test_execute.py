@@ -5,6 +5,8 @@ from commands.objects.start_queue import StartQueueCommand
 from dummies.queue_player import QueuePlayer_dummy
 from dummies.context import Context_dummy
 
+from music.queue import get_queue
+
 class TestStartQueueCommand_execute(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         self.player = QueuePlayer_dummy()
@@ -22,4 +24,5 @@ class TestStartQueueCommand_execute(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(self.player._calledPlay)
         self.assertEqual(self.player.voiceClient, self.ctx.voice_client)
+        self.assertEqual(self.player.queue, get_queue())
 
