@@ -7,5 +7,8 @@ class TestQueuePlayer_default(unittest.TestCase):
         self.player = QueuePlayer_dummy()
 
     def test(self):
+        self.assertIsNone(self.player.voiceClient)
+
         self.assertFalse(self.player._calledNext)
+        self.assertFalse(self.player._calledPlay)
 
