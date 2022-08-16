@@ -1,4 +1,4 @@
-from commands.exceptions.exceptions import NotConnectedException, AlreadyPlayingException
+from commands.exceptions.exceptions import AuthorNotConnectedException, NotConnectedException, AlreadyPlayingException
 
 from message_sender import MessageSender
 
@@ -14,14 +14,18 @@ class PlayCommand:
 
         try:
             await self.try_to_execute(ctx, musicLink)
-        except NotConnectedException:
+        except AuthorNotConnectedException:
             await self.messageSender.send('Tu dois être connecté pour ça')
+        except NotConnectedException:
+            await self.messageSender.send('Je ne suis pas connecté')
         except AlreadyPlayingException:
             await self.messageSender.send('Je joue déjà un truc')
         except WrongLinkException:
             await self.messageSender.send('Le lien ne semble pas fonctionner')
 
     async def try_to_execute(self, ctx, musicLink):
+        if ctx.author.voice is None:
+            raise AuthorNotConnectedException()
         if ctx.voice_client is None:
             raise NotConnectedException()
         if ctx.voice_client.is_playing():
