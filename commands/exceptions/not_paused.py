@@ -1,0 +1,4 @@
+
+class NotPausedException(Exception):
+    pass
+
