@@ -17,3 +17,5 @@ class TestQueuePlayer_play(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.player.voiceClient, self.ctx.voice_client)
         self.assertTrue(self.player._calledPlay)
 
+        self.assertTrue(self.ctx.voice_client.is_playing())
+

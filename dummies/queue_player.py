@@ -1,3 +1,4 @@
+import discord
 
 class QueuePlayer_dummy:
     def __init__(self):
@@ -10,6 +11,8 @@ class QueuePlayer_dummy:
     def play(self, voiceClient):
         self.voiceClient = voiceClient
         self._calledPlay = True
+
+        self.voiceClient.play(discord.AudioSource())
 
     def next(self):
         self._calledNext = True
