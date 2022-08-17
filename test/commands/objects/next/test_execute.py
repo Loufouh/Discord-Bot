@@ -1,30 +1,6 @@
-import unittest
-import discord
+from test.commands.objects.next.test_case_execute import TestCase
 
-from commands.objects.next import NextCommand
-
-from music.queue import Queue
-
-from dummies.context import Context_dummy
-from dummies.queue_player import QueuePlayer_dummy
-
-class TestNextCommand_execute(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.ctx = Context_dummy()
-        self.command = NextCommand()
-        self.queue = Queue()
-        self.player = QueuePlayer_dummy()
-
-        self.queue.add(discord.AudioSource())
-        self.player.set_queue(self.queue)
-
-        self.command.player = self.player
-
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
-        self.player.play(self.ctx.voice_client)
-    
+class TestNextCommand_execute(TestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx)
 
