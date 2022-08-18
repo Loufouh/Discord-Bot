@@ -1,11 +1,6 @@
-import unittest
+from test.dummies.queue_player.test_case import TestCase
 
-from dummies.queue_player import QueuePlayer_dummy
-
-class TestQueuePlayer_next(unittest.TestCase):
-    def setUp(self):
-        self.player = QueuePlayer_dummy()
-
+class TestQueuePlayer_next(TestCase):
     def test(self):
         self.player.next()
 

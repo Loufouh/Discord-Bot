@@ -1,11 +1,10 @@
-import unittest
-
-from dummies.queue_player import QueuePlayer_dummy
+from test.dummies.queue_player.test_case import TestCase
 from music.queue import Queue
 
-class TestQueuePlayer_set_queue(unittest.TestCase):
+class TestQueuePlayer_set_queue(TestCase):
     def setUp(self):
-        self.player = QueuePlayer_dummy()
+        super().setUp()
+
         self.queue = Queue()
 
     def test(self):

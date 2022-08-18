@@ -1,11 +1,10 @@
-import unittest
-
-from dummies.queue_player import QueuePlayer_dummy
+from test.dummies.queue_player.test_case import TestCase
 from dummies.context import Context_dummy
 
-class TestQueuePlayer_play(unittest.IsolatedAsyncioTestCase):
+class TestQueuePlayer_play(TestCase):
     async def asyncSetUp(self):
-        self.player = QueuePlayer_dummy()
+        super().setUp()
+
         self.ctx = Context_dummy()
 
         await self.ctx._connect_author()

@@ -1,11 +1,6 @@
-import unittest
+from test.dummies.queue_player.test_case import TestCase
 
-from dummies.queue_player import QueuePlayer_dummy
-
-class TestQueuePlayer_default(unittest.TestCase):
-    def setUp(self):
-        self.player = QueuePlayer_dummy()
-
+class TestQueuePlayer_default(TestCase):
     def test(self):
         self.assertIsNone(self.player.queue)
         self.assertIsNone(self.player.voiceClient)
