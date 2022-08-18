@@ -1,18 +1,9 @@
-import unittest
 import discord
 
-from dummies.voice_client import VoiceClient_dummy
-from dummies.context import Context_dummy
+from test.dummies.voice_client.test_case import TestCase
 
-class TestVoiceClient_pause(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.ctx = Context_dummy()
 
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
-        self.voiceClient = self.ctx.voice_client
-        
+class TestVoiceClient_pause(TestCase):
     def test(self):
         self.voiceClient.play(discord.AudioSource())
         self.voiceClient.pause()

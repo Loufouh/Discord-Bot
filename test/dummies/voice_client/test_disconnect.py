@@ -1,18 +1,13 @@
 import unittest
 
-from dummies.context import Context_dummy
+from test.dummies.voice_client.test_case import TestCase
 
-class TestVoiceProtocol_disconnect(unittest.IsolatedAsyncioTestCase):
+class TestVoiceProtocol_disconnect(TestCase):
     async def test(self):
-        ctx = Context_dummy()
+        await self.voiceClient.disconnect()
 
-        await ctx._connect_author()
-        await ctx._connect()
-
-        await ctx.voice_client.disconnect()
-
-        self.assertIsNone(ctx.voice_client)
-        self.assertIsNotNone(ctx.author.voice)
+        self.assertIsNone(self.ctx.voice_client)
+        self.assertIsNotNone(self.ctx.author.voice)
         
-        self.assertTrue(ctx.author.voice.channel._isConnected)
+        self.assertTrue(self.ctx.author.voice.channel._isConnected)
 
