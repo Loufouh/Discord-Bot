@@ -5,10 +5,11 @@ from dummies.context import Context_dummy
 from dummies.channel import Channel_dummy
 
 class TestVoiceState_default(unittest.TestCase):
-    def test(self):
-        ctx = Context_dummy()
-        voiceState = VoiceState_dummy(ctx)
+    def setUp(self):
+        self.ctx = Context_dummy()
+        self.voiceState = VoiceState_dummy(self.ctx)
 
-        self.assertEqual(voiceState.ctx, ctx)
-        self.assertIsInstance(voiceState.channel, Channel_dummy)
+    def test(self):
+        self.assertEqual(self.voiceState.ctx, self.ctx)
+        self.assertIsInstance(self.voiceState.channel, Channel_dummy)
 
