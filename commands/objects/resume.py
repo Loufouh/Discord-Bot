@@ -16,6 +16,13 @@ class ResumeCommand:
             await self.messageSender.send('Ce n\'est pas en pause')
 
     async def try_to_execute(self, ctx):
+        self.verify_context(ctx)
+
+        ctx.voice_client.resume()
+
+        await self.messageSender.send('C\'est reparti !')
+
+    def verify_context(self, ctx):
         if ctx.author.voice is None:
             raise AuthorNotConnectedException()
         if ctx.voice_client is None:
@@ -24,8 +31,4 @@ class ResumeCommand:
             raise NotPlayingException()
         if not ctx.voice_client.is_paused():
             raise NotPausedException()
-
-        ctx.voice_client.resume()
-
-        await self.messageSender.send('C\'est reparti !')
 
