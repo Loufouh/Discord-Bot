@@ -15,11 +15,14 @@ class JoinCommand:
             await self.messageSender.send('Je suis déjà connecté') 
 
     async def try_to_execute(self, ctx):
+        self.verify_context(ctx)
+
+        await self.messageSender.send('J\'arrive !')
+        await ctx.author.voice.channel.connect()
+
+    def verify_context(self, ctx):
         if ctx.author.voice is None:
             raise AuthorNotConnectedException()
         if ctx.voice_client is not None:
             raise AlreadyConnectedException()
-
-        await self.messageSender.send('J\'arrive !')
-        await ctx.author.voice.channel.connect()
 
