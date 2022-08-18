@@ -1,4 +1,4 @@
-from test.music.queue.TestCase import TestCase
+from test.music.queue.test_case import TestCase
 
 class TestQueue_pop(TestCase):
     def test_empty(self):
