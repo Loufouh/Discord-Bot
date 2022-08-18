@@ -1,20 +1,6 @@
-import unittest
-import discord
+from test.commands.objects.pause.test_case import TestCase
 
-from commands.objects.pause import PauseCommand
-
-from dummies.context import Context_dummy
-
-class TestPauseCommand_execute(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.command = PauseCommand()
-        self.ctx = Context_dummy()
-
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
-        self.ctx.voice_client.play(discord.AudioSource())
-
+class TestPauseCommand_execute(TestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx)
 
@@ -42,3 +28,4 @@ class TestPauseCommand_execute(unittest.IsolatedAsyncioTestCase):
         await self.command.execute(self.ctx)
 
         self.assertEqual(self.ctx.sent, 'Tu dois être connecté au salon pour ça [author.mention]')
+
