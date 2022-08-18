@@ -4,12 +4,13 @@ from dummies.channel import Channel_dummy
 from dummies.context import Context_dummy
 
 class TestChannel_connect(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.ctx = Context_dummy()
+        self.channel = Channel_dummy(self.ctx)
+
     async def test(self):
-        ctx = Context_dummy()
-        channel = Channel_dummy(ctx)
+        await self.channel.connect()
 
-        await channel.connect()
-
-        self.assertTrue(channel._isConnected)
-        self.assertIsNotNone(channel.ctx.voice_client)
+        self.assertTrue(self.channel._isConnected)
+        self.assertIsNotNone(self.channel.ctx.voice_client)
 
