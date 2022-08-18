@@ -21,14 +21,17 @@ class NextCommand:
             await self.messageSender.send('Je joue rien pour l\'instant')
 
     async def try_to_execute(self, ctx):
+        self.verify_context(ctx)
+
+        self.player.next()
+
+        await self.messageSender.send('Ça marche')
+
+    def verify_context(self, ctx):
         if ctx.author.voice is None:
             raise AuthorNotConnectedException()
         if ctx.voice_client is None:
             raise NotConnectedException()
         if not ctx.voice_client.is_playing():
             raise NotPlayingException()
-
-        self.player.next()
-
-        await self.messageSender.send('Ça marche')
 
