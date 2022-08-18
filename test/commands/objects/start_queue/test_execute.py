@@ -1,26 +1,8 @@
-import unittest
-
-from commands.objects.start_queue import StartQueueCommand
-
-from dummies.queue_player import QueuePlayer_dummy
-from dummies.context import Context_dummy
+from test.commands.objects.start_queue.test_case_execute import TestCase
 
 from music.queue import get_queue
 
-class TestStartQueueCommand_execute(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.player = QueuePlayer_dummy()
-        self.command = StartQueueCommand()
-
-        get_queue().add('source')
-
-        self.command.player = self.player
-
-        self.ctx = Context_dummy()
-
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
+class TestStartQueueCommand_execute(TestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx)
 
