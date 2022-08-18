@@ -1,25 +1,11 @@
-import unittest
+from test.commands.objects.play.test_case_execute import TestCase
 
-from commands.objects.play import PlayCommand
-
-from dummies.context import Context_dummy
-from dummies.audio_source_generator import AudioSourceGenerator_dummy
-
-class TestPlayCommand_execute(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.command = PlayCommand()
-
-        self.command.sourceGenerator = AudioSourceGenerator_dummy()
-        self.ctx = Context_dummy()
-
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
+class TestPlayCommand_execute(TestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx, 'fake_link')
 
-        self.assertEqual(self.ctx.sent, 'Ça marche [author.mention]')
         self.assertTrue(self.ctx.voice_client.is_playing())
+        self.assertEqual(self.ctx.sent, 'Ça marche [author.mention]')
 
     async def test_not_connected(self):
         await self.ctx._disconnect()
