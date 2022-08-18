@@ -24,16 +24,18 @@ class PlayCommand:
             await self.messageSender.send('Le lien ne semble pas fonctionner')
 
     async def try_to_execute(self, ctx, musicLink):
+        self.verify_context(ctx)
+
+        source = self.sourceGenerator.generate_from_link(musicLink)
+
+        await self.messageSender.send('Ça marche')
+        ctx.voice_client.play(source)
+
+    def verify_context(self, ctx):
         if ctx.author.voice is None:
             raise AuthorNotConnectedException()
         if ctx.voice_client is None:
             raise NotConnectedException()
         if ctx.voice_client.is_playing():
             raise AlreadyPlayingException()
-
-        source = self.sourceGenerator.generate_from_link(musicLink)
-
-        await self.messageSender.send('Ça marche')
-
-        ctx.voice_client.play(source)
 
