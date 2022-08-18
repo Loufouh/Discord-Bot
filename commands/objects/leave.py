@@ -13,11 +13,12 @@ class LeaveCommand:
             await self.messageSender.send('Chuis pas connecté')
 
     async def try_to_execute(self, ctx):
-        self.verify_context()
+        self.verify_context(ctx)
 
         await self.messageSender.send('Bye !')
         await ctx.voice_client.disconnect()
 
-    if ctx.voice_client is None:
-        raise NotConnectedException()
+    def verify_context(self, ctx):
+        if ctx.voice_client is None:
+            raise NotConnectedException()
 
