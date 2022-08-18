@@ -22,14 +22,17 @@ class StartQueueCommand:
             await self.messageSender.send('La file est vide')
 
     async def try_to_execute(self, ctx):
+        self.verify_context(ctx)
+
+        self.player.set_queue(get_queue())
+        self.player.play(ctx.voice_client)
+        await self.messageSender.send('C\'est parti !')
+
+    def verify_context(self, ctx):
         if ctx.author.voice is None:
             raise AuthorNotConnectedException()
         if ctx.voice_client is None:
             raise NotConnectedException()
         if get_queue().get_size() == 0:
             raise EmptyQueueException()
-
-        self.player.set_queue(get_queue())
-        self.player.play(ctx.voice_client)
-        await self.messageSender.send('C\'est parti !')
 
