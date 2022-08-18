@@ -1,6 +1,6 @@
 import discord
 
-from music.audio_source_generator import WrongLinkException
+from music.audio_source_generator.common import WrongLinkException
 
 from dummies.audio_url_retriever import AudioUrlRetriever_dummy
 from dummies.ffmpeg_handler import FFmpegHandler_dummy

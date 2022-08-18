@@ -2,7 +2,8 @@ from commands.exceptions.exceptions import AuthorNotConnectedException, NotConne
 
 from message_sender import MessageSender
 
-from music.audio_source_generator import AudioSourceGenerator, WrongLinkException
+from music.audio_source_generator.common import AudioSourceGenerator, WrongLinkException
+
 from dummies.commands.objects.command import Command_dummy
 
 class PlayCommand:

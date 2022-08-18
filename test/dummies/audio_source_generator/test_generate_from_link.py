@@ -1,14 +1,14 @@
 import unittest
 import discord
 
-from music.audio_source_generator import WrongLinkException
+from music.audio_source_generator.common import WrongLinkException
 from dummies.audio_source_generator import AudioSourceGenerator_dummy
 
 class TestAudioSourceGenerator_generate_from_link(unittest.TestCase):
     def setUp(self):
         self.generator = AudioSourceGenerator_dummy()
 
-    def test(self):
+    def test_normal(self):
         source = self.generator.generate_from_link('fake_link')
 
         self.assertIsInstance(source, discord.AudioSource)

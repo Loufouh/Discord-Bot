@@ -1,10 +1,8 @@
 import discord
 
+from music.audio_source_generator.wrong_link_exception import WrongLinkException
 from music.audio_url_retriever import AudioUrlRetriever, WrongUrlException
 from music.ffmpeg_handler import FFmpegHandler
-
-class WrongLinkException(Exception):
-    pass
 
 class AudioSourceGenerator:
     def __init__(self):

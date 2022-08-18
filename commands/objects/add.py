@@ -1,7 +1,7 @@
 
 from message_sender import MessageSender
 
-from music.audio_source_generator import AudioSourceGenerator, WrongLinkException
+from music.audio_source_generator.common import AudioSourceGenerator, WrongLinkException
 from music.queue import get_queue
 
 class AddCommand:
