@@ -1,13 +1,9 @@
-import unittest
-
-from dummies.context import Context_dummy
+from test.dummies.context.test_case import TestCase
 from dummies.voice_state import VoiceState_dummy
 
-class TestContext__connect_author(unittest.IsolatedAsyncioTestCase):
+class TestContext__connect_author(TestCase):
     async def test(self):
-        ctx = Context_dummy()
+        await self.ctx._connect_author()
 
-        await ctx._connect_author()
-
-        self.assertIsInstance(ctx.author.voice, VoiceState_dummy)
+        self.assertIsInstance(self.ctx.author.voice, VoiceState_dummy)
 

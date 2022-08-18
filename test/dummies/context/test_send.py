@@ -1,18 +1,13 @@
-import unittest
+from test.dummies.context.test_case import TestCase
 
-from dummies.context import Context_dummy
-
-class TestContext_send(unittest.IsolatedAsyncioTestCase):
-    def setUp(self):
-        self.context = Context_dummy()
-
+class TestContext_send(TestCase):
     async def test_send_one(self):
-        await self.context.send('test message')
-        self.assertEqual(self.context.sent, 'test message')
+        await self.ctx.send('test message')
+        self.assertEqual(self.ctx.sent, 'test message')
 
     async def test_send_two(self):
-        await self.context.send('first message')
-        await self.context.send('second message')
+        await self.ctx.send('first message')
+        await self.ctx.send('second message')
 
-        self.assertEqual(self.context.sent, 'second message')
+        self.assertEqual(self.ctx.sent, 'second message')
 

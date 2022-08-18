@@ -1,14 +1,8 @@
-import unittest
-
-from dummies.context import Context_dummy
+from test.dummies.context.test_case import TestCase
 from dummies.voice_client import VoiceClient_dummy
-
 from commands.exceptions.exceptions import AuthorNotConnectedException
 
-class TestContext__connect(unittest.IsolatedAsyncioTestCase):
-    def setUp(self):
-        self.ctx = Context_dummy()
-
+class TestContext__connect(TestCase):
     async def test_normal(self):
         await self.ctx._connect_author()
         await self.ctx._connect()

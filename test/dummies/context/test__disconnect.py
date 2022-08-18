@@ -1,15 +1,11 @@
-import unittest
+from test.dummies.context.test_case import TestCase
 
-from dummies.context import Context_dummy
-
-class TestContext__disconnect(unittest.IsolatedAsyncioTestCase):
+class TestContext__disconnect(TestCase):
     async def test(self):
-        ctx = Context_dummy()
+        await self.ctx._connect_author()
+        await self.ctx._connect()
 
-        await ctx._connect_author()
-        await ctx._connect()
+        await self.ctx._disconnect()
 
-        await ctx._disconnect()
-
-        self.assertIsNone(ctx.voice_client)
+        self.assertIsNone(self.ctx.voice_client)
 

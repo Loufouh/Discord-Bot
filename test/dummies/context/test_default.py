@@ -1,14 +1,9 @@
-import unittest
-
-from dummies.context import Context_dummy
+from test.dummies.context.test_case import TestCase
 from dummies.author import Author_dummy
 
-class TestContext_default(unittest.TestCase):
-    def setUp(self):
-        self.context = Context_dummy()
-
+class TestContext_default(TestCase):
     def test(self):
-        self.assertIsInstance(self.context.author, Author_dummy)
-        self.assertIsNone(self.context.voice_client)
-        self.assertEqual(self.context.sent, '')
+        self.assertIsInstance(self.ctx.author, Author_dummy)
+        self.assertIsNone(self.ctx.voice_client)
+        self.assertEqual(self.ctx.sent, '')
 
