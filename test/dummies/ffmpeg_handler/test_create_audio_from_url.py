@@ -10,3 +10,4 @@ class TestFFmpegHandler_create_from_url(unittest.TestCase):
         audio = handler.create_audio_from_url('random_fake_url')
 
         self.assertIsInstance(audio, discord.AudioSource)
+
