@@ -1,22 +1,6 @@
-import unittest
-import discord
+from test.commands.objects.stop.test_case import TestCase
 
-from commands.objects.stop import StopCommand
-from commands.objects.play import PlayCommand
-
-from dummies.context import Context_dummy
-
-class TestStopCommand_execute(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self):
-        self.ctx = Context_dummy()
-
-        self.command = StopCommand()
-
-        await self.ctx._connect_author()
-        await self.ctx._connect()
-
-        self.ctx.voice_client.play(discord.AudioSource())
-
+class TestStopCommand_execute(TestCase):
     async def test_normal(self):
         await self.command.execute(self.ctx)
 
