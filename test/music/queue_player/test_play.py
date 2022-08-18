@@ -6,22 +6,22 @@ class TestQueuePlayer_play(TestCase):
         self.assert_not_playing()
 
     def testQueueWithOneSource(self):
-        self.queue.add('source')
+        self.queue.add(self.sources[0])
 
         self.player.play(self.voiceClient)
-        self.assert_playing_source('source')
+        self.assert_playing_source(self.sources[0])
 
         self.voiceClient.stop()
         self.assertFalse(self.voiceClient.is_playing())
 
     def testQueueWithTwoSources(self):
-        self.add_sources('source1', 'source2')
+        self.add_sources(self.sources[0], self.sources[1])
     
         self.player.play(self.voiceClient)
-        self.assert_playing_source('source1')
+        self.assert_playing_source(self.sources[0])
 
         self.voiceClient.stop()
-        self.assert_playing_source('source2')
+        self.assert_playing_source(self.sources[1])
 
         self.voiceClient.stop()
         self.assert_not_playing()
