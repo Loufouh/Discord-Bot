@@ -1,4 +1,4 @@
-from test.music.queue_player.TestCase import TestCase
+from test.music.queue_player.test_case import TestCase
 
 class TestQueuePlayer_next(TestCase):
     def testEmptyQueue(self):
